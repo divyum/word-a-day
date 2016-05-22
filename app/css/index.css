@@ -1,0 +1,9 @@
+html, body { background: gray !important; }
+
+html, body {
+background: transparent
+},
+
+body {
+    -webkit-app-region: drag;
+}

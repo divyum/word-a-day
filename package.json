@@ -1,0 +1,21 @@
+{
+  "name": "word-a-day",
+  "version": "0.0.1",
+  "description": "an app to learn a new word daily",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "divyum",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.15.1",
+    "express": "^4.10.2",
+    "mongodb": "^2.1.19",
+    "mongojs": "^2.4.0",
+    "mongoose": "^4.4.19",
+    "multer": "^1.1.0",
+    "socket.io": "^1.4.6"
+  }
+}
