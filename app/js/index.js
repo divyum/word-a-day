@@ -3,6 +3,8 @@ var socket = io("http://localhost:3001");
 //          alert("connected!")
 //          });
 // Sets the client's username
+
+var string
 function setUsername () {
 // If the username is valid
     username ="hello"
@@ -37,8 +39,33 @@ function startTime() {
         startTime()
     }, 500);
 }
+
+function addPanel(word, meaning) {
+  var $template = $('.template').clone();
+  $template.find('.panel-heading').text(word);
+  $template.removeAttr("style").find('.panel-body').text(meaning);
+  $template.attr('class', 'panel panel-info')
+  $('#word_list').append($template);
+}
+
+function updateDB() {
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", "http://127.0.0.1:3001/get_words", true);
+  xhr.onreadystatechange=function(){
+         if (xhr.readyState==4 && xhr.status==200){
+           string = JSON.parse(xhr.responseText);
+           for(var i=0 ; i < string.length; i++)
+           {
+            addPanel(string[i]["word"], string[i]["meaning"])
+           }
+         }
+       }
+  xhr.send();
+  }
+
 window.onload = function () {
     startTime();
+    updateDB();
 
     const ipc = require('electron').ipcRenderer;
 
@@ -63,4 +90,3 @@ window.onload = function () {
     });
 
 }
-// setUsername()

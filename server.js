@@ -31,7 +31,6 @@ server.listen(port, function () {
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-
 app.post('/myaction', function(req, res) {
   console.log("word: " + req.body.word)
   console.log("meaning: " + req.body.meaning)
@@ -50,8 +49,8 @@ app.post('/myaction', function(req, res) {
   });
 });
 
-app.get('/', function(req, res) {
-  words_db.find({}, function(err, data){
+app.get('/get_words', function(req, res) {
+  words_db.find({'published':true}, function(err, data){
     console.log(data);
     res.send(data);
   });
